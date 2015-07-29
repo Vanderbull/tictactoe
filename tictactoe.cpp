@@ -92,23 +92,3 @@ bool TicTacToe::DetermineDraw()
         }
     }
 }
-
-Here is the main file, I will keep looping through the game while it isn't a draw. I don't know why the move isn't shown on the board.
- #include <iostream>
-#include "TicTacToe.h"
-
-using namespace std;
-
-int main()
-{
-    TicTacToe game;
-    char player = 'X';
-    while(game.DetermineDraw() == false)
-    {
-        game.DrawBoard();
-        game.GetMove(player);
-        game.TogglePlayer(player);
-    }
-
-    system("pause");
-}
