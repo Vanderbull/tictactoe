@@ -3,11 +3,10 @@
 
 using namespace std;
 
-
 void TicTacToe::DrawBoard()
 {
     system("cls");
-    cout <<"\tWelcome to the Classes Tic Tac Toe! \n";
+    cout <<"\tWelcome to Tic Tac Toe! \n";
     char board[3][3] =
     { 
       {'1','2','3'},
@@ -29,7 +28,7 @@ void TicTacToe::DrawBoard()
 void TicTacToe::GetMove(int move)
 {
     char player = 'X';
-    cout <<"\nEnter the number of the field you would like to move:\n";
+    cout <<"\nEnter the number of the field you would like check:\n";
     cin >> move;
 
     if( move == 1)
