@@ -1,14 +1,14 @@
 #include <iostream>
-#include "TicTacToe.h"
+#include "tictactoe.h"
 
 using namespace std;
 
 void TicTacToe::DrawBoard()
 {
-    system("cls");
+   std::system("clear");
     cout <<"\tWelcome to Tic Tac Toe! \n";
     char board[3][3] =
-    { 
+    {
       {'1','2','3'},
       {'4','5','6'},
       {'7','8','9'},
@@ -86,7 +86,7 @@ bool TicTacToe::DetermineDraw()
         {
             if(board[i][j] == 'X' && board[i][j] == 'O')
                 return true;
-            else 
+            else
                 return false;
         }
     }
