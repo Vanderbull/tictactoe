@@ -1,0 +1,26 @@
+version: 1
+
+review:
+  enable_auto_review: true          # Bot reviews every PR automatically
+  approve_on_passing: false         # Don't auto-approve PRs
+  review_depth: standard            # standard | deep | shallow
+  comment_style: inline             # inline comments instead of big summary dumps
+  max_comments: 20                  # prevent spam on large PRs
+
+rules:
+  ignore:
+    - "*.md"                        # ignore documentation files
+    - "docs/**"                     # ignore docs folder
+    - "tests/**"                    # skip test files if you prefer
+  languages:
+    - python
+    - javascript
+    - typescript
+    - yaml
+    - json
+    - markdown
+    - gdscript
+
+notifications:
+  on_review: true                   # notify when review is posted
+  on_approval: true                 # notify if bot approves (if enabled)
