@@ -1,11 +1,18 @@
 version: 1
 
+
 review:
   enable_auto_review: true          # Bot reviews every PR automatically
   approve_on_passing: false         # Don't auto-approve PRs
   review_depth: standard            # standard | deep | shallow
   comment_style: inline             # inline comments instead of big summary dumps
   max_comments: 20                  # prevent spam on large PRs
+  auto_approve: false
+  profile: assertive          # direct, detailed feedback
+  tone: formal                # removes casual/poetic/chatty text
+  include_summary: false      # no end-of-review summary
+  include_greetings: false    # no "thank you" or "hello" messages
+  include_closing: false      # no closing lines or poetry
 
 rules:
   ignore:
