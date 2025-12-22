@@ -13,6 +13,6 @@ int main()
         game.GetMove(player);
         game.TogglePlayer(player);
     }
-
+    std::cout << "donkey" << endl;
     system("pause");
 }
