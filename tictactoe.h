@@ -5,13 +5,16 @@ class TicTacToe
 {
 private:
     char board[3][3];
+    char currentPlayer;
 
 public:
-    void DrawBoard();
+    TicTacToe();
     void PrintBoard();
-    void GetMove(int move);
-    void TogglePlayer(char player);
-    bool DetermineDraw();
+    bool GetMove(int move);
+    bool CheckWin();
+    bool CheckDraw();
+    void SwitchPlayer();
+    char GetCurrentPlayer();
 };
 
 #endif

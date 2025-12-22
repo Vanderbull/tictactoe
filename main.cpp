@@ -6,13 +6,44 @@ using namespace std;
 int main()
 {
     TicTacToe game;
-    char player = 'X';
-    while(game.DetermineDraw() == false)
+    int move;
+    bool validMove;
+
+    while (true)
     {
-        game.DrawBoard();
-        game.GetMove(player);
-        game.TogglePlayer(player);
+        system("clear");
+        game.PrintBoard();
+        cout << "Player " << game.GetCurrentPlayer() << ", enter your move (1-9): ";
+        cin >> move;
+
+        validMove = game.GetMove(move);
+
+        if (!validMove)
+        {
+            cout << "Invalid move. Try again." << endl;
+            system("pause");
+            continue;
+        }
+
+        if (game.CheckWin())
+        {
+            system("clear");
+            game.PrintBoard();
+            cout << "Player " << game.GetCurrentPlayer() << " wins!" << endl;
+            break;
+        }
+
+        if (game.CheckDraw())
+        {
+            system("clear");
+            game.PrintBoard();
+            cout << "It's a draw!" << endl;
+            break;
+        }
+
+        game.SwitchPlayer();
     }
-    std::cout << "donkey" << endl;
+
     system("pause");
+    return 0;
 }

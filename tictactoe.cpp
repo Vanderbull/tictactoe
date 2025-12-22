@@ -3,17 +3,22 @@
 
 using namespace std;
 
-void TicTacToe::DrawBoard()
+TicTacToe::TicTacToe()
 {
-   std::system("clear");
-    cout <<"\tWelcome to Tic Tac Toe! \n";
-    char board[3][3] =
+    currentPlayer = 'X';
+    char k = '1';
+    for(int i=0; i<3; i++)
     {
-      {'1','2','3'},
-      {'4','5','6'},
-      {'7','8','9'},
-    };
-   std::cout << "donkey boll";
+        for(int j=0; j<3; j++)
+        {
+            board[i][j] = k++;
+        }
+    }
+}
+
+void TicTacToe::PrintBoard()
+{
+    cout << "\tTic Tac Toe\n";
     for(int i=0; i<3; i++)
     {
         for(int j=0; j<3; j++)
@@ -24,70 +29,68 @@ void TicTacToe::DrawBoard()
     }
 }
 
-
-void TicTacToe::GetMove(int move)
+bool TicTacToe::GetMove(int move)
 {
-    char player = 'X';
-    cout <<"\nEnter the number of the field you would like check:\n";
-    cin >> move;
+    int row = (move - 1) / 3;
+    int col = (move - 1) % 3;
 
-    if( move == 1)
+    if(move < 1 || move > 9 || board[row][col] == 'X' || board[row][col] == 'O')
     {
-        board[0][0] = player;
-    }
-    else if(move == 2)
-    {
-        board[0][1] = player;
-    }
-    else if(move == 3)
-    {
-        board[0][2] = player;
-    }
-    else if(move == 4)
-    {
-        board[1][0] = player;
-    }
-    else if(move == 5)
-    {
-        board[1][1] = player;
-    }
-    else if(move == 6)
-    {
-        board[1][2] = player;
-    }
-    else if(move == 7)
-    {
-        board[2][0] = player;
-    }
-    else if(move == 8)
-    {
-        board[2][1] = player;
-    }
-    else if(move == 9)
-    {
-        board[2][2] = player;
+        return false;
     }
 
+    board[row][col] = currentPlayer;
+    return true;
 }
 
-void TicTacToe::TogglePlayer(char player)
+bool TicTacToe::CheckWin()
 {
-    if (player == 'X')
-        player = 'O';
-    else if(player == 'O')
-        player = 'X';
+    // Check rows
+    for (int i = 0; i < 3; i++)
+    {
+        if (board[i][0] == board[i][1] && board[i][1] == board[i][2])
+            return true;
+    }
+
+    // Check columns
+    for (int i = 0; i < 3; i++)
+    {
+        if (board[0][i] == board[1][i] && board[1][i] == board[2][i])
+            return true;
+    }
+
+    // Check diagonals
+    if (board[0][0] == board[1][1] && board[1][1] == board[2][2])
+        return true;
+
+    if (board[0][2] == board[1][1] && board[1][1] == board[2][0])
+        return true;
+
+    return false;
 }
 
-bool TicTacToe::DetermineDraw()
+bool TicTacToe::CheckDraw()
 {
     for(int i=0; i<3; i++)
     {
         for(int j=0; j<3; j++)
         {
-            if(board[i][j] == 'X' && board[i][j] == 'O')
-                return true;
-            else
+            if(board[i][j] != 'X' && board[i][j] != 'O')
                 return false;
         }
     }
+    return true;
+}
+
+void TicTacToe::SwitchPlayer()
+{
+    if (currentPlayer == 'X')
+        currentPlayer = 'O';
+    else
+        currentPlayer = 'X';
+}
+
+char TicTacToe::GetCurrentPlayer()
+{
+    return currentPlayer;
 }
